@@ -1,0 +1,6 @@
+param([string]$Target, [string]$Content)
+$utf8 = [System.Text.UTF8Encoding]::new($false)
+$bytes = $utf8.GetBytes($Content)
+$csv = ($bytes | ForEach-Object { $_ }) -join ","
+Set-Location "C:\Users\Administrator\Projects\handwritten-note"
+$csv | & "E:\node.exe" write-bytes.js $Target

@@ -1,0 +1,16 @@
+// 从 stdin 读 byte literal 写文件
+// 用法: powershell 用 [byte[]] 转 CSV 字符串 -> pipe 到 node
+const fs = require('fs');
+const target = process.argv[2];
+if (!target) { console.error('need path'); process.exit(1); }
+
+const chunks = [];
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', c => chunks.push(c));
+process.stdin.on('end', () => {
+  const csv = chunks.join('').trim();
+  const bytes = csv.split(',').map(s => parseInt(s.trim(), 10));
+  const buf = Buffer.from(bytes);
+  fs.writeFileSync(target, buf);
+  console.log('Wrote ' + buf.length + ' bytes to ' + target);
+});

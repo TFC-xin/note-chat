@@ -1,0 +1,13 @@
+// 从 stdin 读 byte 写文件
+// 用法: node write-stdin.js <target-path>
+const fs = require('fs');
+const target = process.argv[2];
+if (!target) { console.error('need path'); process.exit(1); }
+
+const chunks = [];
+process.stdin.on('data', c => chunks.push(c));
+process.stdin.on('end', () => {
+  const buf = Buffer.concat(chunks);
+  fs.writeFileSync(target, buf);
+  console.log('Wrote ' + buf.length + ' bytes to ' + target);
+});

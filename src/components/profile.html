@@ -1,0 +1,15 @@
+<!-- 简化的片段：昵称/头像选择/入席 -->
+<div id="profile" class="profile-component">
+  <label>昵称：<input id="nickname" type="text" placeholder="输入昵称" /></label>
+  <div class="avatar-area">
+    <img id="avatarPreview" src="" alt="avatar" width="80" height="80" style="border-radius:8px"/>
+    <div class="avatar-controls">
+      <input id="avatarFile" type="file" accept="image/*" />
+      <button id="chooseFolderBtn" type="button">连接相册/文件夹</button>
+      <button id="resetAvatarBtn" type="button">重置头像</button>
+    </div>
+  </div>
+  <div class="profile-actions">
+    <button id="enterBtn" type="button">入席</button>
+  </div>
+</div>

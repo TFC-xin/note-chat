@@ -1,0 +1,22 @@
+/* emoji-btn 样式 & 发送动画 */
+.emoji-panel { display:flex; gap:6px; padding:6px; }
+.emoji-btn { padding:6px 8px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer; transition:transform .12s; }
+.emoji-btn:active { transform:scale(.95); }
+
+/* 发送时飞入动画 */
+.emoji-fly {
+  position:fixed;
+  right:20px;
+  bottom:80px;
+  background:rgba(255,255,255,0.95);
+  padding:10px 14px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  animation:flyUp 900ms cubic-bezier(.2,.9,.2,1);
+  font-size:18px;
+}
+@keyframes flyUp {
+  0% { transform: translateY(0) scale(1); opacity:1; }
+  40% { transform: translateY(-30px) scale(1.1); opacity:1; }
+  100% { transform: translateY(-120px) scale(.9); opacity:0; }
+}
